@@ -74,10 +74,9 @@ Added the following:
 #### 2d) In the starter code, the goal position is hardcoded as some location 10 m north and 10 m east of map center. Modify this to be set as some arbitrary position on the grid given any geodetic coordinates (latitude, longitude)
 
 Added the following code to:
-1. goal_global_position = is a global GPS position. 
-2. To simplify the measurement, I added 5 x 3 meters to the drones global start position. 
-2. Converted it from global position to local and grid positions. 
-3. Checking in the grid position if it is a collision. if it is, warn the use and set the destination to start point to alert the user. 
+1. goal_global_position = is a global latitude, longitude position. 
+2. To simplify the measurement, I added 10 lat + 10 lon meters to the drones home global position. 
+2. I made a new funciton called new_global_position to calculate and add distance in meters to the global position.
 
 ```python
         goal_global_position = new_global_position(self.global_home, 10, 10) #adding 20 x 10 meters to the global_home position. 
