@@ -1,2 +1,4 @@
-# FCND-MotionPlanning
-Udacity Motion Planning Assignment
+# Flying Car Motion-Planning Assignment
+Date: Sept 2018
+
+
