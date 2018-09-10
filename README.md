@@ -75,11 +75,11 @@ Added the following:
 
 Added the following code to:
 1. goal_global_position = is a global latitude, longitude position. 
-2. To simplify the measurement, I added 10 lat + 10 lon meters to the drones home global position. 
+2. To simplify the measurement, I added 15 long + 25 latitude (in meters) to the drones home global position. 
 2. I made a new funciton called new_global_position to calculate and add distance in meters to the global position.
 
 ```python
-        goal_global_position = new_global_position(self.global_home, 10, 10) #adding 20 x 10 meters to the global_home position. 
+        goal_global_position = new_global_position(self.global_home, 15, 25) #adding 15 x 25 meters to the global_home position. 
 
         goal_local_position = global_to_local(goal_global_position, self.global_home)
         grid_goal = (int(goal_local_position[0] - north_offset), int(goal_local_position[1] - east_offset))
