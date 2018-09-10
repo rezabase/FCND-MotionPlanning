@@ -71,9 +71,22 @@ Added the following:
         grid_start = ( int(np.ceil(current_local_pos[0]-north_offset)), int(np.ceil(current_local_pos[1]-east_offset) )
 ```     
 
+#### 2d) In the starter code, the goal position is hardcoded as some location 10 m north and 10 m east of map center. Modify this to be set as some arbitrary position on the grid given any geodetic coordinates (latitude, longitude)
 
+Added the following code to:
+1. can take a global longitude, latitude and altitude
+2. convert it from global position to local and grid positions. 
+3. check in the grid position if it is an abstacle. if it is, warn the use and set the destination to start point to alert the user. 
 
+```python
+        custom_goal = [180, 80, self.global_home[2]] #give custom global longitude (north) and latitude (east) and altitude
+        goal_local_position = global_to_local(custom_goal, self.global_home)
+        goal_grid_position = (int(goal_local_pos[0]-north_offset), int(goal_local_pos[1]-east_offset))
 
+        if grid[goal_grid_position[0]][goal_grid_position[1]] > 0:   # checking that the destination is not colliding with any obstacle 
+            print("\n Destination is inside an obstacle. Setting it to start position. ")
+            grid_goal=grid_start
+```   
 
 
 
