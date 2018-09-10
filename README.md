@@ -122,6 +122,40 @@ I also added the following lines in valid_actions. This is to test if any of dia
 #### 2f) Cull waypoints from the path you determine using search.
 
 
+Added a collinearity check and prune_path funciton to prune some of the zick-zack going waypoints. 
+
+I prepared both the np.linalg.det() that supports floating funciton and the option that supports only int values. I guess, becouse of the CPU cost of floating point calculation, I should try to use the int option for now. 
+
+As there were many waypoints within 2-3 meeters zickzacking on a straight path, I'm using a big epsilon (epsilon=2.5) trying to reduce the number of waypoints. 
+
+```python
+def point(p):
+    return np.array([p[0], p[1], 1.])
+
+def collinearity_check(p1, p2, p3, epsilon=2.5): 
+    mat = np.vstack((point(p1), point(p2), point(p3)))
+    det = np.linalg.det(mat)
+    return np.abs(det) < epsilon
+
+def collinearity_check_int(p1, p2, p3): 
+    collinear = False
+    det = p1[0]*(p2[1] - p3[1]) + p2[0]*(p3[1] - p1[1]) + p3[0]*(p1[1] - p2[1])
+    if det == 0:
+        collinear = True
+    return collinear
+
+def prune_path(path):
+    path = [p for p in path]
+    i = 0
+    while i < len(path) - 2:
+        #if collinearity_check(path[i], path[i+1], path[i+2]):
+        if collinearity_check_int(path[i], path[i+1], path[i+2]):
+            path.remove(path[i+1])
+        else:
+            i += 1
+    return path
+```       
+
 
 
 ## Task 3: Executing the flight
