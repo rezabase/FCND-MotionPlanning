@@ -28,6 +28,22 @@ There is no calculate_box() anymore becouse this time we will be following the w
 
 #### 2a) Modify your code to read the global home location from the first line of the colliders.csv file and set that position as global home (self.set_home_position())
 
+1. Added a new function called read_home_location() in the planning_utils.py file
+2. Added the following code to plan_path():
+
+```python
+        # TODO: read lat0, lon0 from colliders into floating point values
+        lat0, lon0 = read_home_location()
+
+        # TODO: set home position to (lon0, lat0, 0)
+        self.set_home_position(lon0, lat0, 0)
+
+        # TODO: retrieve current global position
+        current_global_position = self.global_position
+
+        # TODO: convert to current local position using global_to_local()
+        current_local_posision = global_to_local(current_global_position, self.global_home)
+```        
 
 #### 2b) Retrieve your current position in geodetic coordinates from self._latitude, self._longitude and self._altitude. Then use the utility function global_to_local() to convert to local position (using self.global_home as well, which you just set)
 
