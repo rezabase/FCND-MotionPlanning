@@ -74,19 +74,36 @@ Added the following:
 #### 2d) In the starter code, the goal position is hardcoded as some location 10 m north and 10 m east of map center. Modify this to be set as some arbitrary position on the grid given any geodetic coordinates (latitude, longitude)
 
 Added the following code to:
-1. can take a global longitude, latitude and altitude
-2. convert it from global position to local and grid positions. 
-3. check in the grid position if it is an abstacle. if it is, warn the use and set the destination to start point to alert the user. 
+1. goal_global_position = is a global GPS position. 
+2. To simplify the measurement, I added 5 x 3 meters to the drones global start position. 
+2. Converted it from global position to local and grid positions. 
+3. Checking in the grid position if it is a collision. if it is, warn the use and set the destination to start point to alert the user. 
 
 ```python
-        custom_goal = [180, 80, self.global_home[2]] #give custom global longitude (north) and latitude (east) and altitude
-        goal_local_position = global_to_local(custom_goal, self.global_home)
-        goal_grid_position = (int(goal_local_pos[0]-north_offset), int(goal_local_pos[1]-east_offset))
+        goal_global_position = self.global_home  #give custom global longitude (north) and latitude (east) and altitude
+        CONVERT_TO_MEETERS = 0.000001
+        goal_global_position[0] += CONVERT_TO_MEETERS * 5   #Adding 5 meters to the global longitude
+        goal_global_position[1] += CONVERT_TO_MEETERS * 3   #Adding 3 meters to the global latitude
 
-        if grid[goal_grid_position[0]][goal_grid_position[1]] > 0:   # checking that the destination is not colliding with any obstacle 
-            print("\n Destination is inside an obstacle. Setting it to start position. ")
-            grid_goal=grid_start
+        goal_local_position = global_to_local(goal_global_position, self.global_home)
+        grid_goal = (int(goal_local_position[0] - north_offset), int(goal_local_position[1] - east_offset))
+
+        print("goal_local_position: {0}".format(goal_local_position))
+        print("grid_goal: {0}".format(grid_goal))
+        print("grid.shape: {0}".format(grid.shape))
+
+        if grid_goal[0] > grid.shape[0] or grid_goal[1] > grid.shape[1] or grid_goal[0] < 0 or grid_goal[1] < 0:
+            print("\n * NOTE: Destination is outside the grid map. setting it back to start ")
+            grid_goal = grid_start
+            self.landing_transition()
+
+        if grid[grid_goal[0]][grid_goal[1]] > 0:   # checking that the destination is not colliding with any obstacle 
+            print("\n * NOTE: Destination is inside an obstacle. Setting it to start position. ")
+            grid_goal = grid_start
+            self.landing_transition()
 ```   
+
+
 
 
 
