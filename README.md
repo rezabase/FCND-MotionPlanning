@@ -42,10 +42,21 @@ There is no calculate_box() anymore becouse this time we will be following the w
         current_global_position = self.global_position
 
         # TODO: convert to current local position using global_to_local()
-        current_local_posision = global_to_local(current_global_position, self.global_home)
+        current_local_position = global_to_local(current_global_position, self.global_home)
 ```        
 
 #### 2b) Retrieve your current position in geodetic coordinates from self._latitude, self._longitude and self._altitude. Then use the utility function global_to_local() to convert to local position (using self.global_home as well, which you just set)
 
+
+```python
+        # TODO: retrieve current global position
+        current_global_position = [self._longitude, self._latitude, self._altitude]
+        print("self.global_position: {0}".format(self.global_position))
+        print("current_global_position: {0}".format(current_global_position))
+
+        # TODO: convert to current local position using global_to_local()
+        current_local_position = global_to_local(current_global_position, self.global_home)
+        print("current_local_position: {0}".format(current_local_position))
+```        
 
 
