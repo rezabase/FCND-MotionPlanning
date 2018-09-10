@@ -94,8 +94,29 @@ Added the following code to:
 
 #### 2e) add diagonal motions to the A* implementation provided, and assign them a cost of sqrt(2). However, you're encouraged to get creative and try other methods from the lessons and beyond!
 
+Added diagonal motions by adding new possible actions to the Action(Enum) as shown below. The costs for diagonal actions are math.sqrt(2)
 
+```python
+#Diagonal Movements
+    NE = (-1, 1,math.sqrt(2))
+    SE = ( 1, 1,math.sqrt(2))
+    SW = ( 1,-1,math.sqrt(2))
+    NW = (-1,-1,math.sqrt(2))
+``` 
 
+I also added the following lines in valid_actions. This is to test if any of diagonal actions will result collision with obstacles and if it does, remove them from possible actions. 
+
+```python
+# Diagonal movements
+    if x - 1 < 0 or y - 1 < 0 or grid[x-1,y-1] == 1:
+        valid_actions.remove(Action.NW)
+    if x - 1 < 0 or y + 1 > m or grid[x-1,y+1] == 1:
+        valid_actions.remove(Action.NE)
+    if x + 1 > n or y - 1 < 0 or grid[x+1,y-1] == 1:
+        valid_actions.remove(Action.SW)
+    if x + 1 > n or y + 1 > m or grid[x+1,y+1] == 1:
+        valid_actions.remove(Action.SE)
+```        
 
 
 #### 2f) Cull waypoints from the path you determine using search.
