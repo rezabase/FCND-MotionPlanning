@@ -47,6 +47,7 @@ There is no calculate_box() anymore becouse this time we will be following the w
 
 #### 2b) Retrieve your current position in geodetic coordinates from self._latitude, self._longitude and self._altitude. Then use the utility function global_to_local() to convert to local position (using self.global_home as well, which you just set)
 
+Added the following: 
 
 ```python
         # TODO: retrieve current global position
@@ -58,5 +59,21 @@ There is no calculate_box() anymore becouse this time we will be following the w
         current_local_position = global_to_local(current_global_position, self.global_home)
         print("current_local_position: {0}".format(current_local_position))
 ```        
+
+#### 2c) In the starter code, the start point for planning is hardcoded as map center. Change this to be your current local position.
+
+Added the following: 
+
+```python
+        #grid_start = (-north_offset, -east_offset)
+
+        # TODO: convert start position to current position rather than map center
+        grid_start = ( int(np.ceil(current_local_pos[0]-north_offset)), int(np.ceil(current_local_pos[1]-east_offset) )
+```     
+
+
+
+
+
 
 
