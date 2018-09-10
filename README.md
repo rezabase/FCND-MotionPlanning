@@ -15,6 +15,15 @@ There is no calculate_box() anymore becouse this time we will be following the w
 6. plan_path() funciton is incomplete and needs the planning code that is part of this assigment. 
 
 
+#### To summarise, the code does the following: 
+
+1. Connects tot he simulator using MavlinkConnect()
+2. Initiates some parameters and registers 3 callback functions that will be called by the flight controller based on the state of the flight. 
+3. the state_callback funciotn initiates ARMING, and PLANNING phases. 
+4. Plan_path() funciton, loads the 2.5D obstacle list (colliders.csv). it converts it to usable data, calculates the planning path and creates the waypoints that the drovne will follow. 
+5. positioning events call the local_position_callback() funciton periodically and it will detect when the drone reaches  intermediate drone destinations until the last waypoint. After reaching the last waypoint, it will initiate the landing.
+
+
 ## Task 2: Implementing Your Path Planning Algorithm
 
 #### 2a) Modify your code to read the global home location from the first line of the colliders.csv file and set that position as global home (self.set_home_position())
