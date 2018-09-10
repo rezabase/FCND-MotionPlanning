@@ -78,6 +78,8 @@ Added the following code to:
 2. To simplify the measurement, I added 15 long + 25 latitude (in meters) to the drones home global position. 
 2. I made a new funciton called new_global_position to calculate and add distance in meters to the global position.
 
+****** NOTE I CHANGED GOAL LOCATION TO A FIXED LOCATION. *******
+
 ```python
         goal_global_position = new_global_position(self.global_home, 15, 25) #adding 15 x 25 meters to the global_home position. 
 
