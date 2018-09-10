@@ -80,25 +80,13 @@ Added the following code to:
 3. Checking in the grid position if it is a collision. if it is, warn the use and set the destination to start point to alert the user. 
 
 ```python
-        goal_global_position = self.global_home  #give custom global longitude (north) and latitude (east) and altitude
-        CONVERT_TO_MEETERS = 0.000001
-        goal_global_position[0] += CONVERT_TO_MEETERS * 5   #Adding 5 meters to the global longitude
-        goal_global_position[1] += CONVERT_TO_MEETERS * 3   #Adding 3 meters to the global latitude
+        goal_global_position = new_global_position(self.global_home, 10, 10) #adding 20 x 10 meters to the global_home position. 
 
         goal_local_position = global_to_local(goal_global_position, self.global_home)
         grid_goal = (int(goal_local_position[0] - north_offset), int(goal_local_position[1] - east_offset))
 
-        print("goal_local_position: {0}".format(goal_local_position))
-        print("grid_goal: {0}".format(grid_goal))
-        print("grid.shape: {0}".format(grid.shape))
-
         if grid_goal[0] > grid.shape[0] or grid_goal[1] > grid.shape[1] or grid_goal[0] < 0 or grid_goal[1] < 0:
             print("\n * NOTE: Destination is outside the grid map. setting it back to start ")
-            grid_goal = grid_start
-            self.landing_transition()
-
-        if grid[grid_goal[0]][grid_goal[1]] > 0:   # checking that the destination is not colliding with any obstacle 
-            print("\n * NOTE: Destination is inside an obstacle. Setting it to start position. ")
             grid_goal = grid_start
             self.landing_transition()
 ```   
