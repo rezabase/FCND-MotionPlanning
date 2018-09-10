@@ -105,5 +105,20 @@ Added the following code to:
 
 
 
+#### 2e) add diagonal motions to the A* implementation provided, and assign them a cost of sqrt(2). However, you're encouraged to get creative and try other methods from the lessons and beyond!
+
+
+
+
+
+#### 2f) Cull waypoints from the path you determine using search.
+
+
+
+
+## Task 3: Executing the flight
+
+
+
 
 
