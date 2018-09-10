@@ -15,4 +15,12 @@ There is no calculate_box() anymore becouse this time we will be following the w
 6. plan_path() funciton is incomplete and needs the planning code that is part of this assigment. 
 
 
+## Task 2: Implementing Your Path Planning Algorithm
+
+### 2a) Modify your code to read the global home location from the first line of the colliders.csv file and set that position as global home (self.set_home_position())
+
+
+### 2b) Retrieve your current position in geodetic coordinates from self._latitude, self._longitude and self._altitude. Then use the utility function global_to_local() to convert to local position (using self.global_home as well, which you just set)
+
+
 
