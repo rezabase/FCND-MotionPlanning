@@ -162,6 +162,14 @@ def prune_path(path):
 
 ## Task 3: Executing the flight
 
+After starting the testing, I made the following adjustments: 
+
+1. I realised that running A* on the Grid takes very long time if the destination is far away. Therefore, I implemented the Skeleton, median Axis and run the A* on the skeleton data. That significantly reduces the time create the path. 
+
+2. In the local_position_callback(), i increased the minimum distanse to each waypoint, to trigger waypoint_transision towards the nest waypoint. I increased it from 1.0 to 6.0. that has made the drone transision between waypoints very smooth. it doesnt try to slow down every time.  
+
+
+
 
 
 
