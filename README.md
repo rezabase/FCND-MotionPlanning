@@ -75,16 +75,23 @@ Added the following:
 
 Added the following code to:
 1. goal_global_position = is a global latitude, longitude position. 
-2. To simplify the measurement, I added 15 long + 25 latitude (in meters) to the drones home global position. 
-2. I made a new funciton called new_global_position to calculate and add distance in meters to the global position.
-
-****** NOTE I CHANGED GOAL LOCATION TO A FIXED LOCATION. *******
+2. First, I made a funciton that added some distance to the home_location to use it as the goal but then I realised its easier to fly the drone manually to some other location and type in the locations in the code manuall. Anyway, if needed, the following line is still there and can be used if necessary.
 
 ```python
-        goal_global_position = new_global_position(self.global_home, 15, 25) #adding 15 x 25 meters to the global_home position. 
+      #goal_global_position = new_global_position(self.global_home, 15, 25) #adding 20 x 10 meters to the global_home position.   
+```
 
+2. Below is what I added to calculate the goal position. (Please ntoe that later on I also added a skeleton calculation and had to calculate the goal on the skeleton. 
+
+
+```python
+        goal_global_position = [-122.401055, 37.795461, 0]
         goal_local_position = global_to_local(goal_global_position, self.global_home)
         grid_goal = (int(goal_local_position[0] - north_offset), int(goal_local_position[1] - east_offset))
+
+        print("goal_local_position: {0}".format(goal_local_position))
+        print("grid_goal: {0}".format(grid_goal))
+        print("grid.shape: {0}".format(grid.shape))
 
         if grid_goal[0] > grid.shape[0] or grid_goal[1] > grid.shape[1] or grid_goal[0] < 0 or grid_goal[1] < 0:
             print("\n * NOTE: Destination is outside the grid map. setting it back to start ")
