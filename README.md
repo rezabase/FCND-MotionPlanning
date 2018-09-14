@@ -15,7 +15,7 @@ motion_planning.py contains the code required to pass this assignment. In additi
 3. Just because of curiosity, I did also try to use graphs to create random waypoints and select a path through them. The code seems like working but of some reason, it was extremely slow on my computer. Therefore, I moved that code to a folder that is called "Probabilistic Waypoints__DIDNT WORK". Please feel free to have a look if you are interested. 
 
 
-#### A) motion_planning_rh.py:
+#### B) motion_planning_rh.py:
 
 In addition to above, I did spend another 10 - 15 additional hours trying to implement a Receding Horizon 3D grid around the drone and find an intermediate path through it. It is still not functioning perfectly and I think I do need to spend another 10h to figure out how to improve it. However, as it is not the main requirement of this assignment, I left it as it is for the moment. You can try it out by running motion_plannin_rh.py
 
@@ -113,7 +113,7 @@ Added the following code to:
       #goal_global_position = new_global_position(self.global_home, 15, 25) #adding 20 x 10 meters to the global_home position.   
 ```
 
-2b. Below is what I added to calculate the goal position. (Please note that later on I also added a skeleton calculation and had to calculate the goal on the skeleton. 
+Below is what I added to calculate the goal position. (Please note that later on I also added a skeleton calculation and had to calculate the goal on the skeleton. 
 
 
 ```python
