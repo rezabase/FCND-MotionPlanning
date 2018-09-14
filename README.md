@@ -1,5 +1,5 @@
 # Flying Car Motion-Planning Assignment
-Date: Sept 2018
+Date: 14 Sept 2018
 
 I have prepared two versions as explained below: 
 
