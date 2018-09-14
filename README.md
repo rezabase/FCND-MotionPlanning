@@ -1,6 +1,20 @@
 # Flying Car Motion-Planning Assignment
 Date: Sept 2018
 
+I have prepared two versions as explained below: 
+
+#### A) motion_planning.py: 
+
+motion_planning.py contains the code required to pass this assignment. In addition to minimum requirements, I have also added the following changes: 
+
+
+1. I realised that running A* on the entire Grid to find a path takes a very long time, if the destination is far away. Therefore, I implemented the median Axis algorythm (with Skeleton) and run the A* on the skeleton data instead of the entire grid. That significantly reduces the time create the path. 
+
+2. In the local_position_callback(), i increased the minimum distanse to each waypoint, to trigger waypoint_transision towards the nest waypoint. I increased it from 1.0 to 6.0. that has made the drone transision between waypoints very smooth. it doesnt try to slow down every time.  
+
+3. Just because of curiosity, I did also try to use graphs to create random waypoints and select a path through them. The code seems like working but of some reason, it was extreemly slow on my computer. Therefore, I moved that code to a folder that is called "Probalistic Waypoints__DIDNT WORK". Please feel free to have a look if you are interested. 
+
+
 
 ## Task 1: Explain the starter code
 
@@ -171,9 +185,7 @@ def prune_path(path):
 
 After starting the testing, I made the following adjustments: 
 
-1. I realised that running A* on the Grid takes very long time if the destination is far away. Therefore, I implemented the Skeleton, median Axis and run the A* on the skeleton data. That significantly reduces the time create the path. 
 
-2. In the local_position_callback(), i increased the minimum distanse to each waypoint, to trigger waypoint_transision towards the nest waypoint. I increased it from 1.0 to 6.0. that has made the drone transision between waypoints very smooth. it doesnt try to slow down every time.  
 
 
 
