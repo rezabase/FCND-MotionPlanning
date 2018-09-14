@@ -17,7 +17,13 @@ motion_planning.py contains the code required to pass this assignment. In additi
 
 #### A) motion_planning_rh.py:
 
-In addition to above, I did spend another 10 - 15 additional hours trying to implement a Reciding Horizon 3D grid around the drone. 
+In addition to above, I did spend another 10 - 15 additional hours trying to implement a Reciding Horizon 3D grid around the drone and find an intermediate path through it. It is still not functioning perfectly and I think I do need to spend another 10h to figure out how to improve it. However, as it is not the main requirement of this assigment, I left it as it is for the moment. You can try it out by running motion_plannin_rh.py
+
+And there are the staps I took to create it: 
+
+1. I created a 3D grid around the posision of the drone that looks like the following: 
+
+
 
 
 ## Task 1: Explain the starter code
