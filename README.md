@@ -25,6 +25,16 @@ And there are the staps I took to create it:
 
 ![alt text](misc/rh1.png "Step 1")
 
+2. I used a slightly modified version of the potential_field code to create vector based costs for each grid cell. 
+
+![alt text](misc/rh2.png "Step 2")
+
+3. I did really not know what to use to calculate the intermediate path of the drone within the 3D grid, so I modified the A* algorythm to find a path within the 3D grid using the vector costs that I calculated using the potential_field code. picture below shows the path. (please note that vectors are pointing to the opositie direciton)
+
+![alt text](misc/rh3.png "Step 3")
+
+
+
 
 ## Task 1: Explain the starter code
 
