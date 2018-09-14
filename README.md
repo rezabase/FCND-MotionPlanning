@@ -23,7 +23,7 @@ And there are the staps I took to create it:
 
 1. I created a 3D grid around the posision of the drone that looks like the following: 
 
-
+![alt text](misc/rh1.png "Step 1")
 
 
 ## Task 1: Explain the starter code
